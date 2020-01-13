@@ -1,0 +1,41 @@
+server:
+  port: 8082
+spring:
+  kafka:
+    bootstrap-servers: http://host.docker.internal:9092
+#    bootstrap-servers: http://${HOST_IP}:9092
+  zipkin:
+    sender:
+      type: kafka
+    kafka:
+      topic: blunt-config
+  sleuth:
+    messaging:
+      kafka:
+        enabled: true
+    sampler:
+      probability: 1.0
+  boot:
+    admin:
+      client:
+        url: http://host.docker.internal:9000
+#        url: http://${HOST_IP}:9000
+        instance:
+          health-url: http://host.docker.internal:8082/actuator/health
+          management-url: http://host.docker.internal:8082/actuator
+  cloud:
+    config:
+      server:
+        git:
+          search-paths: gateway-service, onboard-service, follow-service
+          uri: https://github.com/karpoora/config-repository
+          username: sundarapandiank@yahoo.com
+          clone-on-start: true
+          password: Karnan22@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
