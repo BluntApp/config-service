@@ -27,7 +27,7 @@ spring:
     config:
       server:
         git:
-          search-paths: gateway-service, onboard-service, follow-service, sms-service
+          search-paths: gateway-service, onboard-service, follow-service, sms-service, publish-service
           uri: https://github.com/BluntApp/config-repository
           username: sundarapandiank@yahoo.com
           clone-on-start: true
